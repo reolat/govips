@@ -1632,6 +1632,15 @@ func (r *ImageRef) Rank(width int, height int, index int) error {
 	return nil
 }
 
+func (r *ImageRef) Morph(mask *ImageRef, morph OperationMorphology) error {
+	out, err := vipsMorph(r.image, mask.image, morph)
+	if err != nil {
+		return err
+	}
+	r.setImage(out)
+	return nil
+}
+
 // Resize resizes the image based on the scale, maintaining aspect ratio
 func (r *ImageRef) Resize(scale float64, kernel Kernel) error {
 	return r.ResizeWithVScale(scale, -1, kernel)

@@ -4,3 +4,4 @@
 #include <vips/vips.h>
 
 int rank(VipsImage *in, VipsImage **out, int width, int height, int index);
+int morph (VipsImage *in, VipsImage **out, VipsImage *mask, VipsOperationMorphology morph);
